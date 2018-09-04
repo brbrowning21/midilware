@@ -15,7 +15,7 @@ class Twister:
         # first two pages are 0x3F/0x41 endless encoders
         # second two pages are 0-127 CCs
         self.controls = [Knob(in_p=self.midi_in, out_p=self.midi_out,
-                                 cc=c, channel=0) for c in range(32)]
+                              cc=c, channel=0) for c in range(32)]
             
     def run(self):
         """Send MIDI CC back to the Twister on the same channel it came

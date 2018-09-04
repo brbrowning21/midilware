@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 mido = "*"
 python-rtmidi = "*"
+kivy = "*"
 
 [dev-packages]
 ipython = "*"
