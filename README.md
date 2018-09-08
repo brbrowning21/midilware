@@ -22,7 +22,7 @@ Output channels:
   [49, 56]  - strobe
   [57, 64]  - glow
   [65, 95] - dimmest to brightest
-  
+
 
 Animations can be calculated on the computer and sent via incremental midi
 messages. OR they can be optimized and use a premade one that the Twister
@@ -40,3 +40,31 @@ Input channels
 4 - When knob is set to "Shift Encoder Hold", turning it while pressed will send
     on this channel
 5
+
+
+Where does buffer live?
+Assume it lives within twister
+Confirm by connecting Twister to powered usb hub to laptop. Then spamming messages to it, immediately removing USB from hub to laptop. Does the powered Twister still respond to message queue?
+Alternative: look at schematic
+
+Test length of buffer (be that internal or external)
+Spam with random
+Send a known pattern
+Start timing
+Spam random (count # of these msgs)
+Send a known pattern
+Stop timing
+Idk what this does lol
+
+Random: to prevent midi fighter from optimizing the display updates to LEDs
+Known pattern: something to distinguish from random
+
+Another test: try to fill the buffer. After what point does message get lost?
+
+# Test results
+Hooked up laptop -> USB hub -> Twister. Spammed messages to Twister, then yanked
+the cable between laptop and hub. Twister immediately stopped.
+Buffer must live on the laptop side (despite rtmidi library not listing
+any buffer/queue on the output side).
+This is actually good because it means the MIDI message output rate of the
+computer is the bottleneck.
