@@ -15,7 +15,7 @@ channel = 0
 print(dir(midi_in))
 
 for msg in midi_in:
-    
+
     if msg.control == 32:
         control = msg.value
     elif msg.control == 33:
